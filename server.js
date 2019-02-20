@@ -165,27 +165,16 @@ app.get('/artist-top-tracks', function (request, response) {
      .then(function(data) {
 
       // Send the list of tracks
-      t.data = data.body;
+      t.data = data.body.tracks;
+      while (topTracks.filter(t => t.data !== undefined).length === topTracks.length){
+        response.send(topTracks);
+      }
 
     }, function(err) {
       console.error(err);
     });  
   });
   
-  // do {
-  //   response.send(topTracks);
-  // } while (topTracks.filter(t => t.data !==undefined).length
-  //          == topTracks.length
-  // );
-  
-  let check = () => {
-    if (topTracks.filter(t => t.data !== undefined).length 
-        !== topTracks.length) {
-      setTimeout(check, 500);
-    } else {
-      response.send(topTracks);
-    }
-  }
   
 });
 
