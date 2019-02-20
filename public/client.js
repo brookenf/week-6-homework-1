@@ -25,20 +25,17 @@ $(function() {
     var artists = '';
     
     data.artists.forEach(function(artist) {
-      artists = artists + artist.name + ' ';
+      artists = artists + artist.name + ' <br>' ;
     });
     
-    let h5 = document.createElement('h5');
-    h5.innerText = artists;
-    html += artists;
+    html += '<h5>' + artists + '</h5> ';
     
     // Display the album art
     // var img = document.createElement('IMG');
     // img.attr('src', data.album.images[0].url);
     // img.appendTo('#search-track-container');
-    var img = document.createElement("img");
-    img.setAttribute("src", data.album.images[0].url);
-    img.setAttribute("alt", "Search tracks's album art cover");
+    var img = document.createElement('img');
+    html += img;
     
     searchContainer.innerHTML = html;
   });
