@@ -86,9 +86,13 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
     songs.forEach((song) => {
       html += `<h3>${song}</h3>`;
       for(var i = 0; i < data.length; i++) {
-       if(song == ""){
-          keys.forEach((key) =>{
+       if(song == "Whenever You Need Somebody"){
+        keys.forEach((key) =>{
            html += `<p><span class="big-number">${data[0][key]}</span> ${key}</p>`;
+        });
+       }else{
+        keys.forEach((key) =>{
+           html += `<p><span class="big-number">${data[1][key]}</span> ${key}</p>`;
         });
        }
         audioContainer.innerHTML = html; 
