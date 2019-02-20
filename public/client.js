@@ -53,6 +53,23 @@ $(function() {
     });
   });
   
+//    $.get('/tracks', function(data) {
+//     // "Data" is the object we get from the API. See server.js for the function that returns it.
+//     console.group('%cResponse from /tracks', 'color: #F037A5; font-size: large');
+//     console.log(data);
+//     console.groupEnd();
+    
+//     // The name of the track in 'Audio Features'
+//     for(var i = 0; i < data.length; i++) {
+//       console.log(data[i].name);
+//       var trackTitle = $('<h3>' + data[i].name + '</h3>');
+//       trackTitle.appendTo('#audio-features-name'); 
+//     }
+    
+//   });
+  
+  
+  
   fetch('/audio-features').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
@@ -64,42 +81,67 @@ $(function() {
     var html = '';
     
     // The audio features we want to show
-    var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"];
+    var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"]
     for(var i = 0; i < data.length; i++) {
       console.log(data[i]);
-      // map the keys array
+  
      // Display the audio features
-      keys.map(function(key, j) {
-        if (data[i].hasOwnProperty(key)) {
-          var feature = `<p><span class="big-number">${data[i][key]}</span>${key}</p>`;
-          console.log(feature);
-        }
-      });
+      // keys.map(function(key, j) {
+      //   if (data[i].hasOwnProperty(key)) {
+      //     html += '<p><span class="big-number">' + data[i][key] + '</span>' + key + '</p>';
+      //     audioContainer.innerHTML = html;
+      //   }
+      // });
     }
     
   });
   
-  $.get('/artist', function(data) {
+  
+  fetch('/artist').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /artist', 'color: #F037A5; font-size: large');
     console.log(data);
     console.groupEnd();
     
-    // Display the artist's image
-    var img = $('<img class="circle-image" />');
-    img.attr('src', data.images[0].url);
-    img.appendTo('#artist-container');
-    
-    // Display the artist name
-    var trackName = $('<h3>' + data.name + '</h3>');
-    trackName.appendTo('#artist-container');
-    
-    // Display the artist's genres
-    data.genres.map(function(genre, i) {
-      var genreItem = $('<p>' + genre + '</p>');
-      genreItem.appendTo('#artist-container');
-    });
+    //Display the artist's image
+  
+  
+  
   });
+//   $.get('/artist', function(data) {
+//     // "Data" is the object we get from the API. See server.js for the function that returns it.
+//     console.group('%cResponse from /artist', 'color: #F037A5; font-size: large');
+//     console.log(data);
+//     console.groupEnd();
+    
+//     data.map(function(artist, i) {
+//       // Display the artist's image
+//       var img = $('<img class="circle-image" />');
+//       img.attr('src', data[i].images[0].url);
+//       img.appendTo('#artist-container');
+    
+//       // Display the artist name
+//       var artistName = $('<h3>' + data[i].name + '</h3>');
+//       artistName.appendTo('#artist-container');
+
+//       // Display the artist's genres
+//       data[i].genres.map(function(genre, j) {
+//         var genreItem = $('<p>' + genre + '</p>');
+//         genreItem.appendTo('#artist-container');
+//       });
+      
+//       if (data[i].name == 'Justin Timberlake') {
+//         // Display JT's popularity
+//         var popularity = $('<p><span class="big-number">#' + data[1].popularity + '</span> in popularity </p>');
+//         popularity.appendTo('#artist-container');
+
+//         //Display no of followers JT has
+//         var noOfFollowers = data[1].followers.total.toLocaleString();
+//         var followers = $('<p><span class="big-number">' + noOfFollowers + '</span> followers</p>');
+//         followers.appendTo('#artist-container');
+//       }
+//     });//end of data.map for artists
+//   });
   
   $.get('/artist-top-tracks', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
