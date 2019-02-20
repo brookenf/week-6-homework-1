@@ -173,10 +173,12 @@ fetch('/albums').then(resp => resp.json()).then((data) => {
     var albumContainer = `<br/><img src="${album.images[0].url}"/><h3 class="bonus-name">${album.name}</h3>`;
     html += albumContainer;
     var tracks = album.tracks.items;
+    html += `<ol start="1">`;
     tracks.forEach(function(track) {
       var trackNames = `<li>${track.name}</li>`;
       html += trackNames;
     });
+    html += `</ol>`;
     bonusContainer.innerHTML = html;
   });
 });
