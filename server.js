@@ -48,6 +48,8 @@ spotifyApi.clientCredentialsGrant()
 
 app.get('/search-track', function (request, response) {
   
+  // SE
+  
   // Search for a track!
   spotifyApi.searchTracks('track:Jennie', {limit: 1})
     .then(function(data) {
