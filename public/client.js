@@ -146,7 +146,10 @@ fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
   // Display the artists names
   data.forEach((t) => {
     html += `<h3>${t.name}</h3>`;
-    
+    var trackNames = t.data;
+    trackNames.forEach((song) => {
+      html += `<li>${song.name}</li>`;
+    });
     topTracksContainer.innerHTML = html;
   });
 });
