@@ -139,23 +139,31 @@ fetch('/artist').then(resp => resp.json()).then((data) => {
 fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
 // "Data" is the object we get from the API. See server.js for the function that returns it.
   console.group('%cResponse from /artist-top-tracks', 'color: #F037A5; font-size: large');
-  // console.log(data);
+  console.log(data);
   console.groupEnd();
-
-
-
+  
+  // Define the variables
+  var topTracksContainer = document.getElementById('');
+  
+  // Display the artists names
 });
 
   
-//   $.get('/artist-top-tracks', function(data) {
+//  $.get('/artist-top-tracks', function(data) {
 //     // "Data" is the object we get from the API. See server.js for the function that returns it.
 //     console.group('%cResponse from /artist-top-tracks', 'color: #F037A5; font-size: large');
-//     console.log(data);
+//     for (var i = 0; i < data.length; i++) {
+//       console.log(data[i]);
+//     }
 //     console.groupEnd();
-    
+
+//     //Display the artists names
+//     var artistsName = $('<h3>'+ data[0].artists[0].name +'</h3>');
+//     artistsName.appendTo('#top-tracks-container');
+
 //     // Display the audio features
-//     data.map(function(track, i) {
+//     data.map(function(track, j) {
 //       var trackName = $('<li>' + track.name + '</li>');
-//       trackName.appendTo('#top-tracks-container');
-//     });
-//   });
+//         trackName.appendTo('#top-tracks-container');
+//       });
+//   });//end of .get artist top tracks

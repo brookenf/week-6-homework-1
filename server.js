@@ -155,7 +155,7 @@ app.get('/artist-top-tracks', function (request, response) {
       name: "ABBA"
     },
     {
-      trackId: "31TPClRtHm23RisEBtV3X7",
+      trackId: '31TPClRtHm23RisEBtV3X7',
       code: "Justin Timberlake"
     }
   ];
@@ -165,24 +165,22 @@ app.get('/artist-top-tracks', function (request, response) {
      .then(function(data) {
 
       // Send the list of tracks
-      t.data = data.body.tracks;
+      t.data = data.body;
 
     }, function(err) {
       console.error(err);
     });  
   });
   
-  while(topTracks.filter(t => t.data !==undefined).length == topTracks.length){
-    response.send(topTracks);
+  let check = () => {
+    if (topTracks.filter(t => t.data !== undefined).length 
+        !== topTracks.length) {
+      setTimeout(check, 500);
+    } else {
+      response.send(topTracks);
+    }
   }
-  // let check = () => {
-  //   if (topTracks.filter(t => t.data !== undefined).length 
-  //       !== topTracks.length) {
-  //     setTimeout(check, 500);
-  //   } else {
-  //     response.send(topTracks);
-  //   }
-  // }
+  
 });
 
 
