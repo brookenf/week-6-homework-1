@@ -55,6 +55,9 @@ app.get('/search-track', function (request, response) {
     },
     {
       name: "Helplessness Blues"
+    },
+    {
+      name: "Stairway to Heaven" 
     }
   ];
   
@@ -102,7 +105,7 @@ app.get('/category-playlists', function (request, response) {
   // Get the playlists for the given category for each country
   countries.forEach((c) => {
     spotifyApi.getPlaylistsForCategory(
-      'kpop', 
+      'reggae', 
       { country: c.code, limit : 10 }
     )
       .then((data) => {
