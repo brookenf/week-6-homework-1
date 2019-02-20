@@ -98,17 +98,19 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
     var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"]
 
     //getting the names mapped and the keys mapped
-    names.forEach((name) => {
+    for(var i = 0; i < data.length; i++) {
+      names.forEach((name) => {
       html += `<h3>${name}</h3>`
-      for(var i = 0; i < data.length; i++) {
-        keys.map(function(key, k) {
-          html += `<p><span class="big-number">${data[i][key]}</span> ${key}</p>`;
-        });
+      
+        // keys.map(function(key, k) {
+          html += `<p><span class="big-number">${data[i][keys]}</span> ${keys}</p>`;
+        // });
   
       audioContainer.innerHTML = html;
-    }
+    
     
     });
+    }
     
     
   });
