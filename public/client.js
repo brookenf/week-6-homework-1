@@ -52,23 +52,6 @@ fetch('/category-playlists').then(resp => resp.json()).then((data) => {
   });
 });
 
-//    $.get('/tracks', function(data) {
-//     // "Data" is the object we get from the API. See server.js for the function that returns it.
-//     console.group('%cResponse from /tracks', 'color: #F037A5; font-size: large');
-//     console.log(data);
-//     console.groupEnd();
-
-//     // The name of the track in 'Audio Features'
-//     for(var i = 0; i < data.length; i++) {
-//       console.log(data[i].name);
-//       var trackTitle = $('<h3>' + data[i].name + '</h3>');
-//       trackTitle.appendTo('#audio-features-name'); 
-//     }
-
-//   });
-
-
-
 fetch('/audio-features').then(resp => resp.json()).then((data) => {
   // "Data" is the object we get from the API. See server.js for the function that returns it.
   console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
@@ -161,21 +144,14 @@ fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
   var html = '';
   
   // Display the artists names
-  
+  data.forEach((t) => {
+    html += `<h3>${t.name}</h3>`;
+    data.map(function(track, j) {
+      var trackName 
+    });
+    topTracksContainer.innerHTML = html;
+  });
 });
-
-  
-//  $.get('/artist-top-tracks', function(data) {
-//     // "Data" is the object we get from the API. See server.js for the function that returns it.
-//     console.group('%cResponse from /artist-top-tracks', 'color: #F037A5; font-size: large');
-//     for (var i = 0; i < data.length; i++) {
-//       console.log(data[i]);
-//     }
-//     console.groupEnd();
-
-//     //Display the artists names
-//     var artistsName = $('<h3>'+ data[0].artists[0].name +'</h3>');
-//     artistsName.appendTo('#top-tracks-container');
 
 //     // Display the audio features
 //     data.map(function(track, j) {
