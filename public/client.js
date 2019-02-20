@@ -18,17 +18,16 @@ $(function() {
     
     // Display the artist name
     var artists = '';
-    
     data.artists.forEach(function(artist) {
       artists = artists + artist.name + ' <br>' ;
     });
-    
     html += '<h5>' + artists + '</h5> ';
     
     // Display the album art
     var img = `<img src="${data.album.images[0].url}"/>`;
     html += img;
     
+    //build the HTML
     searchContainer.innerHTML = html;
   });
   
@@ -40,12 +39,12 @@ $(function() {
     console.groupEnd();
     
     // Define variables
-    let catId = document.getElementById('category-playlists-container');
+    var catId = document.getElementById('category-playlists-container');
     var html = '';
     
-    // Loop through each array to parse the data
-    data.forEach((c) => {
-      html  += `<br><h1>${c.name}</h1><br>`;
+    //loop through data
+    data.forEach(function(c){
+      html  += `<br/><h1>${c.name}</h1><br/>`;
       c.data.playlists.items.map(function(playlist, i) { 
         var img = `<img class="cover-image" src="${playlist.images[0].url}" />`;
         html += img;
@@ -54,23 +53,37 @@ $(function() {
     });
   });
   
-  fetch()
-
-   // "Data" is the object we get from the API. See server.js for the function that returns it.
-//     console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
-//     console.log(data);
-//     console.groupEnd();
+  fetch('/audio-features').then(resp => resp.json()).then((data) => {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
+    console.log(data);
+    console.groupEnd();
     
-//     // The audio features we want to show
-//     var keys = ["danceability", "energy", "acousticness", "speechiness", "loudness"]
+    // Define the variables
+    var audioContainer = document.getElementById();;
     
-//     // Display the audio features
-//     keys.map(function(key, i) {
-//       if (data.hasOwnProperty(key)) {
-//         var feature = $('<p><span class="big-number">' + data[key] + ' </span>'  + key + '</p>');
-//         feature.appendTo('#audio-features-container');
-//       }
-//     });
+  });
+  
+  
+   $.get('/audio-features', function(data) {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
+    console.groupEnd();
+    
+    // The audio features we want to show
+    var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"]
+    for (var i = 0; i < data.length; i++) {
+      console.log(data[i]);
+             
+      // Display the audio features
+      keys.map(function(key, j) {
+        if (data[i].hasOwnProperty(key)) {
+          var feature = $('<p><span class="big-number">' + data[i][key] + ' </span>'  + key + '</p>');
+          feature.appendTo('#audio-features-container');
+        }
+      });
+    }
+  });
   
   $.get('/artist', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
