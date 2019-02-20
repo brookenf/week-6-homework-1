@@ -128,8 +128,6 @@ $(function() {
         var noOfFollowers = data[1].followers.total.toLocaleString();
         var followers = `<p><span class="big-number">${noOfFollowers}</span> followers</p>`;
         html += followers;
-//         var followers = $('<p><span class="big-number">' + noOfFollowers + '</span> followers</p>');
-//         followers.appendTo('#artist-container');
       }
       
       // Build the HTML
