@@ -77,6 +77,7 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
     });
     console.log(songs);
     
+    
     // The audio features we want to show
     var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"];
     
@@ -85,9 +86,11 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
     songs.forEach((song) => {
       html += `<h3>${song}</h3>`;
       for(var i = 0; i < data.length; i++) {
-        keys.forEach((key) =>{
-           html += `<p><span class="big-number">${data[i][key]}</span> ${key}</p>`;
+       if(song == ""){
+          keys.forEach((key) =>{
+           html += `<p><span class="big-number">${data[0][key]}</span> ${key}</p>`;
         });
+       }
         audioContainer.innerHTML = html; 
       } 
     });
