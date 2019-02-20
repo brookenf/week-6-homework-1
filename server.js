@@ -148,16 +148,39 @@ app.get('/artist', function (request, response) {
 
 app.get('/artist-top-tracks', function (request, response) {
   
-  // Get an artist's top tracks in a country
-  spotifyApi.getArtistTopTracks('0LcJLqbBmaGUft1e9Mm8HV', 'SE')
-    .then(function(data) {
-    
+ // Get an artist's top tracks in a country
+  let topTracks = [
+    {
+      trackId: "0LcJLqbBmaGUft1e9Mm8HV",
+      name: "ABBA"
+    },
+    {
+      trackId: "31TPClRtHm23RisEBtV3X7",
+      code: "Justin Timberlake"
+    }
+  ];
+  
+  topTracks.forEach((t) => {
+    spotifyApi.getArtistTopTracks(t.trackId, 'SE')
+     .then(function(data) {
+
       // Send the list of tracks
-      response.send(data.body.tracks);
-    
+      t.data = data.body.tracks;
+      console.log(t.data);
+
     }, function(err) {
       console.error(err);
-    });
+    });  
+  });
+  
+  let check = () => {
+    if (topTracks.filter(t => t.data !== undefined).length 
+        !== topTracks.length) {
+      setTimeout(check, 500);
+    } else {
+      response.send(topTracks);
+    }
+  }
 });
 
 
