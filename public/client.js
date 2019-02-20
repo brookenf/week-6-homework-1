@@ -143,7 +143,8 @@ fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
   console.groupEnd();
   
   // Define the variables
-  var topTracksContainer = document.getElementById('');
+  var topTracksContainer = document.getElementById('top-tracks-container');
+  var html = '';
   
   // Display the artists names
 });
@@ -167,3 +168,35 @@ fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
 //         trackName.appendTo('#top-tracks-container');
 //       });
 //   });//end of .get artist top tracks
+
+//bonus section
+fetch('/albums').then(resp => resp.json()).then((data) => {
+ //"Data" is the object we get from the API. See server.js for the function that returns it.
+  console.group('%cResponse from /albums', 'color: #F037A5; font-size: large');
+  console.log(data);
+  console.groupEnd();
+  
+  
+});
+
+
+// $.get('/albums', function(data) {
+//     // "Data" is the object we get from the API. See server.js for the function that returns it.
+//     console.group('%cResponse from /albums', 'color: #F037A5; font-size: large');
+//     console.log(data);
+//     console.groupEnd();
+    
+//     data.map(function(album, i) {
+//       //build the info
+//       var albumContainer = $(
+//         '<br/><img src="' + album.images[0].url +'"/><h3 class="bonus-name">' + album.name + '</h3>'
+//       );
+//       albumContainer.appendTo('#bonus-container');
+//         var tracks = album.tracks.items;
+//           for(var j = 0; j < tracks.length; j++) {
+//             var trackNames = $('<li>' + tracks[j].name + '</li>');
+//             trackNames.appendTo('#bonus-container');
+//         }
+//     });
+      
+//   });//end of .get album
