@@ -108,7 +108,33 @@ $(function() {
     var artistContainer = document.getElementById('artist-container');
     
     // Display the artist's image
-    data.map
+    data.map(function(artist, i) {
+      var img = `<img class="circle-image" src="${data[i].images[0].url}" alt="${data[i].name}'s image"/>`;
+      html += img;
+      
+      // Display the artist's genres
+      data[i].genres.map(function(genre, j) {
+        var genreItem = `<p>${genre}</p>`;
+        html += genreItem;
+      });
+      
+      // Set some conditional logic for information to only show on JT
+      if (data[i].name == 'Justin Timberlake') {
+        // Display JT's popularity
+        var popularity = `<p><span class="big-number">#${data[1].popularity}</span> in popularity</p>`;
+        html += popularity;
+
+        //Display no of followers JT has
+        var noOfFollowers = data[1].followers.total.toLocaleString();
+        var followers = `<p><span class="big-number">${noOfFollowers}</span> followers</p>`;
+        html += followers;
+//         var followers = $('<p><span class="big-number">' + noOfFollowers + '</span> followers</p>');
+//         followers.appendTo('#artist-container');
+      }
+      
+      // Build the HTML
+      artistContainer.innerHTML = html;
+    });
   
   
   });
