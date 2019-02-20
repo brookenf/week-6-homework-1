@@ -65,12 +65,12 @@ app.get('/category-playlists', function (request, response) {
   // Make an initial list of countries
   let countries = [
     {
-      name: "Sweden",
-      code: "SE"
+      name: "Canada",
+      code: "CA"
     },
     {
-      name: "France",
-      code: "FR"
+      name: "Japan",
+      code: "JP"
     },
   ];
   
@@ -78,7 +78,7 @@ app.get('/category-playlists', function (request, response) {
   // Get the playlists for the given category for each country
   countries.forEach((c) => {
     spotifyApi.getPlaylistsForCategory(
-      'jazz', 
+      'kpop', 
       { country: c.code, limit : 10 }
     )
       .then((data) => {

@@ -39,21 +39,20 @@ $(function() {
     document.getElementById('search-track-container').append(img);
   });
   
-  $.get('/category-playlists', function(data) {
+  
+  fetch('/category-playlists').then(resp => resp.json()).then((data) => {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /category-playlists', 'color: #F037A5; font-size: large');
     console.log(data);
     console.groupEnd();
     
-    // Display the covers of the playlists
-    data
-      .forEach((c) => {
-      $('#category-playlists-container').append(`<br><h1>${c.name}</h1><br>`)
+    data.forEach((c) => {
+      document.getElementById('category-playlists-container').innerHTML = `<br><h1>${c.name}</h1><br>`;
       c.data.playlists.items.map(function(playlist, i) {
-      var img = $('<img class="cover-image"/>');
-      img.attr('src', playlist.images[0].url);
-      img.appendTo('#category-playlists-container');
-    });
+        var img = $('<img class="cover-image"/>');
+        img.attr('src', playlist.images[0].url);
+        img.appendTo('#category-playlists-container');
+      });
     })
   });
   
