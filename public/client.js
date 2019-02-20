@@ -79,9 +79,7 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
   var audioContainer = document.getElementById('audio-features-container');
   var html = '';
   
-   //fetch the names of the songs
-  var names = [];
-      
+  // Fetch the names of the songs
   fetch('/tracks').then(resp => resp.json()).then((data2) => {
    // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /tracks', 'color: #F037A5; font-size: large');
@@ -90,26 +88,20 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
     
     // Get the track names
     data2.forEach((track) => {
-      names.push(track.name);
+      data.push(track.name[0]);
     });
-    console.log(names);
+   
     
     // The audio features we want to show
     var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"]
 
     //getting the names mapped and the keys mapped
     for(var i = 0; i < data.length; i++) {
-      names.forEach((name) => {
-      html += `<h3>${name}</h3>`
-      
-        // keys.map(function(key, k) {
-          html += `<p><span class="big-number">${data[i][keys]}</span> ${keys}</p>`;
-        // });
-  
-      audioContainer.innerHTML = html;
-    
-    
-    });
+        html += `<h3>${name}</h3>`
+        keys.forEach((key) =>{
+          html += `<p><span class="big-number">${data[i][key]}</span> ${key}</p>`;
+        });
+      audioContainer.innerHTML = html;    
     }
     
     
