@@ -24,16 +24,12 @@
     album.artists.forEach(function(artist) {
       artists = artists + artist.name + ' <br/>';
     });     
-    html += `<h5>${artists}<h5>`;
+    html += `<h5>${artists}</h5>`;
 
     // Display the album art
     var img = `<img src="${album.album.images[0].url}"/>`;
-    html += img;
-   
-   
+    html += img; 
    });
-
-    //build the HTML
     searchContainer.innerHTML = html;
   });
 
