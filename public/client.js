@@ -60,29 +60,23 @@ $(function() {
     console.groupEnd();
     
     // Define the variables
-    var audioContainer = document.getElementById();;
-    
-  });
-  
-  
-   $.get('/audio-features', function(data) {
-    // "Data" is the object we get from the API. See server.js for the function that returns it.
-    console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
-    console.groupEnd();
+    var audioContainer = document.getElementById('audio-features-container');
+    var html = '';
     
     // The audio features we want to show
-    var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"]
-    for (var i = 0; i < data.length; i++) {
+    var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"];
+    for(var i = 0; i < data.length; i++) {
       console.log(data[i]);
-             
-      // Display the audio features
+      // map the keys array
+     // Display the audio features
       keys.map(function(key, j) {
         if (data[i].hasOwnProperty(key)) {
-          var feature = $('<p><span class="big-number">' + data[i][key] + ' </span>'  + key + '</p>');
-          feature.appendTo('#audio-features-container');
+          var feature = `<p><span class="big-number">${data[i][key]}</span>${key}</p>`;
+          console.log(feature);
         }
       });
     }
+    
   });
   
   $.get('/artist', function(data) {
