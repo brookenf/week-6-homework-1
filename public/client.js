@@ -13,19 +13,25 @@
    var html = '';
    var searchContainer = document.getElementById('search-track-container');
 
-   //Get Name of Song & link to it on Spotify
-   html += `<h3><a href="${data.external_urls.spotify}" target="_blank">${data.name}</a></h3>`;
+   data.forEach((song) => {
+     console.log(song.data);
+     //Get Name of Song & link to it on Spotify
+     html += `<h3><a href="${song.data.external_urls.spotify}" target="_blank">${song.name}</a></h3>`;
 
     // Display the artist name
     var artists = '';
-    data.artists.forEach(function(artist) {
-      artists = artists + artist.name + ' <br>' ;
-    });
-    html += '<h5>' + artists + '</h5> ';
+    
+    // data.artists.forEach(function(artist) {
+    //   artists = artists + artist.name + ' <br>' ;
+    // });
+    // html += '<h5>' + artists + '</h5> ';
 
     // Display the album art
-    var img = `<img src="${data.album.images[0].url}"/>`;
+    var img = `<img src="${song.data.album.images[0].url}"/>`;
     html += img;
+   
+   
+   });
 
     //build the HTML
     searchContainer.innerHTML = html;
