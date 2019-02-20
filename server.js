@@ -48,18 +48,30 @@ spotifyApi.clientCredentialsGrant()
 
 app.get('/search-track', function (request, response) {
   
-  // SE
+  // Search for multiple tracks
+  var multitrack = ['track:Jennie', 'track:Helplessness Blues'];
   
-  // Search for a track!
-  spotifyApi.searchTracks('track:Jennie', {limit: 1})
+  multitrack.forEach((s) => {
+     // Search for a track!
+  spotifyApi.searchTracks('track:Jennie Helplessness Blues', 
+                          {limit: 1})
     .then(function(data) {
     
       // Send the first (only) track object
-      response.send(data.body.tracks.items[0]);
+      s.data = data.body.tracks.items[0];
+      console.log(s.data);
+      // response.send(data.body.tracks.items[0]);
+      while (multitrack.filter(s => s.data !== undefined).length === multitrack.length){
+        // response.send(multitrack);
+      }
     
     }, function(err) {
       console.error(err);
     });
+  
+  
+  });
+ 
 });
 
 app.get('/category-playlists', function (request, response) {
