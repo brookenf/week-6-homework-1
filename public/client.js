@@ -103,7 +103,6 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
             keys.forEach((key) =>{
               html += `<p><span class="big-number">${data[i][key]}</span> ${key}</p>`;
             });
-
         audioContainer.innerHTML = html;    
       }    
     });
@@ -162,6 +161,7 @@ fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
   var html = '';
   
   // Display the artists names
+  
 });
 
   

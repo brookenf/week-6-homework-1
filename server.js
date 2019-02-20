@@ -172,6 +172,12 @@ app.get('/artist-top-tracks', function (request, response) {
     });  
   });
   
+  // do {
+  //   response.send(topTracks);
+  // } while (topTracks.filter(t => t.data !==undefined).length
+  //          == topTracks.length
+  // );
+  
   let check = () => {
     if (topTracks.filter(t => t.data !== undefined).length 
         !== topTracks.length) {
