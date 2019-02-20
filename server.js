@@ -121,11 +121,11 @@ app.get('/tracks', function(request, response) {
 app.get('/audio-features', function (request, response) {
   
   // Get the audio features for a track ID
-  spotifyApi.getAudioFeaturesForTrack('5qUAdDl59w0Vbu4Gi6ecSX')
+  spotifyApi.getAudioFeaturesForTracks(['5qUAdDl59w0Vbu4Gi6ecSX', '7GhIk7Il098yCjg4BQjzvb'])
     .then(function(data) {
     
       //Send the audio features object
-      response.send(data.body);
+      response.send(data.body.audio_features);
     
     }, function(err) {
       console.error(err);

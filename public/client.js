@@ -83,7 +83,12 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
   var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"]
   for(var i = 0; i < data.length; i++) {
     console.log(data[i]);
-
+    keys.map(function(key, j) {
+      console.log(data[i][key]);
+      html += `<p><span class="big-number">${data[i][key]}</span> ${key}</p>`;
+    });
+  
+    audioContainer.innerHTML = html;
    // Display the audio features
     // keys.map(function(key, j) {
     //   if (data[i].hasOwnProperty(key)) {
