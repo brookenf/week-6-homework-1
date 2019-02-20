@@ -62,7 +62,6 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
   var audioContainer = document.getElementById('audio-features-container');
   var html = '';
   
-  for(var i = 0; i < data.length; i++) {
   // Fetch the names of the songs
   fetch('/tracks').then(resp => resp.json()).then((data2) => {
    // "Data" is the object we get from the API. See server.js for the function that returns it.
@@ -76,14 +75,15 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
     data2.forEach((track) => {
       songs.push(track.name);
     });
+    console.log(songs);
     
     console.log(songs);
     // The audio features we want to show
     var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"]
+    
 
     //getting the names mapped and the keys mapped
-   
-      
+      for(var i = 0; i < data.length; i++) {
         songs.forEach((song) => {
           html += `<h3>${song}</h3>`;
           keys.forEach((key) =>{
@@ -91,9 +91,8 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
             });
         audioContainer.innerHTML = html;
       });
-        
-    });
-  }
+    }    
+  });
 });
 
 
