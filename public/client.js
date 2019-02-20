@@ -103,8 +103,12 @@ $(function() {
     console.log(data);
     console.groupEnd();
     
-    //Display the artist's image
-  
+    // Define variables
+    var html = '';
+    var artistContainer = document.getElementById('artist-container');
+    
+    // Display the artist's image
+    data.map
   
   
   });
