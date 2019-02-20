@@ -31,9 +31,6 @@ $(function() {
     html += '<h5>' + artists + '</h5> ';
     
     // Display the album art
-    // var img = document.createElement('IMG');
-    // img.attr('src', data.album.images[0].url);
-    // img.appendTo('#search-track-container');
     var img = `<img src="${data.album.images[0].url}"/>`;
     html += img;
     
@@ -51,14 +48,10 @@ $(function() {
     
      data.forEach((c) => {
       html  += `<br><h1>${c.name}</h1><br>`;
-      catId.innerHTML = html;
       c.data.playlists.items.map(function(playlist, i) { 
-        var img = document.createElement('img');
-        img.setAttribute('class','cover-image');
-        img.setAttribute('src', playlist.images[0].url);
-      //   var img = $('<img class="cover-image"/>');
-      //   img.attr('src', playlist.images[0].url);
-      //   img.appendTo('#category-playlists-container');
+        var img = `<img class="cover-image" src="${playlist.images[0].url}" />`;
+        html += img;
+        catId.innerHTML = html;
       });
     });
   });
