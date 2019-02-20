@@ -49,35 +49,38 @@ spotifyApi.clientCredentialsGrant()
 app.get('/search-track', function (request, response) {
   
   // Search for multiple tracks
-  var multitrack = ['Jennie', 'Helplessness Blues'];
+   let multitrack = [
+    {
+      name: "Jennie"
+    },
+    {
+      name: "Helplessness Blues"
+    }
+  ];
   
   multitrack.forEach(function(s) {
      // Search for a track!
-    spotifyApi.searchTracks('track:' + s, 
+    spotifyApi.searchTracks('track:' + s.name, 
                           {limit: 1})
     .then(function(data) {
-      console.log(data.body.tracks.items[0]);
+      s.data = data.body.tracks.items[0];
+      
       // Send the first (only) track object
-      while (multitrack.filter(s => s.data !== undefined).length === multitrack.length){
-        
-        s.data = data.body.tracks.items[0];
-        
-      //   // response.send(multitrack);
+      while (multitrack.filter(s => s.data !== undefined).length === multitrack.length) {
+        response.send(multitrack);
       }
-    
     }, function(err) {
       console.error(err);
     });
   });
   
-  let check = () => {
-    if (multitrack.filter(s => s.data !== undefined).length 
-    !== multitrack.length) {
-      setTimeout(check, 500);
-    } else {
-      response.send(multitrack);
-    }
-  }
+  // let check = () => {
+  //   if (multitrack.filter(s => s.data !== undefined).length === multitrack.length) {
+  //     setTimeout(check, 500);
+  //   } else {
+  //     response.send(multitrack);
+  //   }
+  // }
  
 });
 
@@ -92,7 +95,7 @@ app.get('/category-playlists', function (request, response) {
     {
       name: "Japan",
       code: "JP"
-    },
+    }
   ];
   
   
