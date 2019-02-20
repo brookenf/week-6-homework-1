@@ -21,8 +21,8 @@ $(function() {
     // Display the artist name
     var artists = '';
     
-    data.artists.forEach(function(item) {
-      artists = artists + item.name + ' ';
+    data.artists.forEach(function(artist) {
+      artists = artists + artist.name + ' ';
     });
     
     let h5 = document.createElement('h5');
@@ -30,7 +30,7 @@ $(function() {
     document.getElementById('search-track-container').append(h5);
     
     // Display the album art
-    var img = $('<img/>');
+    var img = document.querySelector('img');
     img.attr('src', data.album.images[0].url);
     img.appendTo('#search-track-container');
   });
