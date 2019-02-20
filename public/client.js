@@ -9,11 +9,11 @@ fetch('/search-track').then(resp => resp.json()).then((data) => {
   console.groupEnd();
 
  // Define variables
-  var html = '';
-  var searchContainer = document.getElementById('search-track-container');
+ var html = '';
+ var searchContainer = document.getElementById('search-track-container');
 
-  //Get Name of Song & link to it on Spotify
-  html += `<h3><a href="${data.external_urls.spotify}" target="_blank">${data.name}</a></h3>`;
+ //Get Name of Song & link to it on Spotify
+ html += `<h3><a href="${data.external_urls.spotify}" target="_blank">${data.name}</a></h3>`;
 
   // Display the artist name
   var artists = '';
