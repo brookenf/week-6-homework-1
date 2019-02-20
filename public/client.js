@@ -145,7 +145,7 @@ fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
   
   // Display the artists names
   data.forEach((t) => {
-    html += `<h3>${t.name}</h3>`;
+    html += `<h3>${t.name}</h3><em>from ${t.country}</em>`;
     var trackNames = t.data;
     html += `<ol start="1">`;
     trackNames.forEach((song) => {
@@ -155,13 +155,6 @@ fetch('/artist-top-tracks').then(resp => resp.json()).then((data) => {
     topTracksContainer.innerHTML = html;
   });
 });
-
-//     // Display the audio features
-//     data.map(function(track, j) {
-//       var trackName = $('<li>' + track.name + '</li>');
-//         trackName.appendTo('#top-tracks-container');
-//       });
-//   });//end of .get artist top tracks
 
 //bonus section
 fetch('/albums').then(resp => resp.json()).then((data) => {

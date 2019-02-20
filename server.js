@@ -152,11 +152,13 @@ app.get('/artist-top-tracks', function (request, response) {
   let topTracks = [
     {
       trackId: "0LcJLqbBmaGUft1e9Mm8HV",
-      name: "ABBA"
+      name: "ABBA",
+      country: "Sweden"
     },
     {
       trackId: '31TPClRtHm23RisEBtV3X7',
-      name: "Justin Timberlake"
+      name: "Justin Timberlake",
+      country: "Sweden"
     }
   ];
   
