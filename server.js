@@ -49,28 +49,35 @@ spotifyApi.clientCredentialsGrant()
 app.get('/search-track', function (request, response) {
   
   // Search for multiple tracks
-  var multitrack = ['track:Jennie', 'track:Helplessness Blues'];
+  var multitrack = ['Jennie', 'Helplessness Blues'];
   
-  multitrack.forEach((s) => {
+  multitrack.forEach(function(s) {
      // Search for a track!
-  spotifyApi.searchTracks('track:Jennie Helplessness Blues', 
+    spotifyApi.searchTracks('track:' + s, 
                           {limit: 1})
     .then(function(data) {
-    
+      console.log(data.body.tracks.items[0]);
       // Send the first (only) track object
-      s.data = data.body.tracks.items[0];
-      console.log(s.data);
-      // response.send(data.body.tracks.items[0]);
       while (multitrack.filter(s => s.data !== undefined).length === multitrack.length){
-        // response.send(multitrack);
+        
+        s.data = data.body.tracks.items[0];
+        
+      //   // response.send(multitrack);
       }
     
     }, function(err) {
       console.error(err);
     });
-  
-  
   });
+  
+  let check = () => {
+    if (multitrack.filter(s => s.data !== undefined).length 
+    !== multitrack.length) {
+      setTimeout(check, 500);
+    } else {
+      response.send(multitrack);
+    }
+  }
  
 });
 
