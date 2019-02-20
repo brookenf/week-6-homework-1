@@ -84,20 +84,20 @@ fetch('/audio-features').then(resp => resp.json()).then((data) => {
 
     //getting the names mapped and the keys mapped
     songs.forEach((song) => {
+    for(var i = 0; i < 1; i++) {
       html += `<h3>${song}</h3>`;
-      for(var i = 0; i < data.length; i++) {
        if(song == "Whenever You Need Somebody"){
-        keys.forEach((key) =>{
+         keys.forEach((key) =>{
            html += `<p><span class="big-number">${data[0][key]}</span> ${key}</p>`;
-        });
+         });
        }else{
-        keys.forEach((key) =>{
+         keys.forEach((key) =>{
            html += `<p><span class="big-number">${data[1][key]}</span> ${key}</p>`;
-        });
+         });
        }
         audioContainer.innerHTML = html; 
       } 
-    });
+   });
   });
 });
 
