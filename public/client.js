@@ -46,14 +46,18 @@ $(function() {
     console.log(data);
     console.groupEnd();
     
-    data.forEach((c) => {
+    data.forEach(function(c){
       document.getElementById('category-playlists-container').innerHTML = `<br><h1>${c.name}</h1><br>`;
-      c.data.playlists.items.map(function(playlist, i) {
-        var img = $('<img class="cover-image"/>');
-        img.attr('src', playlist.images[0].url);
-        img.appendTo('#category-playlists-container');
-      });
-    })
+    });
+    
+    //  data.forEach((c) => {
+    //   $('#category-playlists-container').append(`<br><h1>${c.name}</h1><br>`)
+    //   c.data.playlists.items.map(function(playlist, i) {
+    //   var img = $('<img class="cover-image"/>');
+    //   img.attr('src', playlist.images[0].url);
+    //   img.appendTo('#category-playlists-container');
+    // });
+    // })
   });
   
   $.get('/audio-features', function(data) {
