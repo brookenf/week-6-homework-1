@@ -166,7 +166,6 @@ app.get('/artist-top-tracks', function (request, response) {
 
       // Send the list of tracks
       t.data = data.body.tracks;
-      console.log(t.data);
 
     }, function(err) {
       console.error(err);
