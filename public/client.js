@@ -21,11 +21,10 @@
 
     // Display the artist name
     var artists = '';
-    console.log(album.artists);
-    // data.artists.forEach(function(artist) {
-    //   artists = artists + artist.name + ' <br>' ;
-    // });
-    // html += '<h5>' + artists + '</h5> ';
+    album.artists.forEach(function(artist) {
+      artists = artists + artist.name + ' <br/>';
+    });     
+    html += `<h5>${artists}<h5>`;
 
     // Display the album art
     var img = `<img src="${album.album.images[0].url}"/>`;
