@@ -34,7 +34,7 @@ $(function() {
     // var img = document.createElement('IMG');
     // img.attr('src', data.album.images[0].url);
     // img.appendTo('#search-track-container');
-    var img = document.createElement('img');
+    var img = `<img src="${data.album.images[0].url}"/>`;
     html += img;
     
     searchContainer.innerHTML = html;
