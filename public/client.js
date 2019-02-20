@@ -15,6 +15,7 @@ $(function() {
     //   `<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`
     // );
     // trackName.appendTo('#search-track-container');
+    var html = '';
     var trackName = document.getElementById('search-track-container');
     trackName.innerHTML = `<h3><a href="${data.external_urls.spotify}" target="_blank">${data.name}</a></h3>`;
     
@@ -27,7 +28,7 @@ $(function() {
     
     let h5 = document.createElement('h5');
     h5.innerText = artists;
-    document.getElementById('search-track-container').append(h5);
+    document.getElementById('search-track-container').textContent = h5;
     
     // Display the album art
     // var img = document.createElement('IMG');
@@ -52,7 +53,9 @@ $(function() {
       html  += `<br><h1>${c.name}</h1><br>`;
       catId.innerHTML = html;
       c.data.playlists.items.map(function(playlist, i) { 
-        
+        var img = document.createElement('img');
+        img.setAttribute('class','cover-image');
+        img.setAttribute('src', playlist.images[0].url);
       //   var img = $('<img class="cover-image"/>');
       //   img.attr('src', playlist.images[0].url);
       //   img.appendTo('#category-playlists-container');
