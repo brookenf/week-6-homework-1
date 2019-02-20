@@ -16,8 +16,10 @@ $(function() {
     // );
     // trackName.appendTo('#search-track-container');
     var html = '';
-    var trackName = document.getElementById('search-track-container');
-    trackName.innerHTML = `<h3><a href="${data.external_urls.spotify}" target="_blank">${data.name}</a></h3>`;
+    var searchContainer = document.getElementById('search-track-container');
+    
+    //Get Name of Song & link to it on Spotify
+    html += `<h3><a href="${data.external_urls.spotify}" target="_blank">${data.name}</a></h3>`;
     
     // Display the artist name
     var artists = '';
@@ -28,7 +30,7 @@ $(function() {
     
     let h5 = document.createElement('h5');
     h5.innerText = artists;
-    document.getElementById('search-track-container').textContent = h5;
+    html += artists;
     
     // Display the album art
     // var img = document.createElement('IMG');
@@ -37,7 +39,8 @@ $(function() {
     var img = document.createElement("img");
     img.setAttribute("src", data.album.images[0].url);
     img.setAttribute("alt", "Search tracks's album art cover");
-    document.getElementById('search-track-container').append(img);
+    
+    searchContainer.innerHTML = html;
   });
   
   
