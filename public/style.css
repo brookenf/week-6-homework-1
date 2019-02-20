@@ -47,3 +47,7 @@ footer {
   font-weight: bold;
   color: #1E3264;
 }
+
+.bonus-name {
+  margin-top: 0 !important;
+}

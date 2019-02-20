@@ -176,6 +176,20 @@ fetch('/albums').then(resp => resp.json()).then((data) => {
   console.log(data);
   console.groupEnd();
   
+  // Define the variables 
+  var html = '';
+  var bonusContainer = document.getElementById('bonus-container');
+  
+  // map the data array
+  data.map(function(album, i) {
+    // Get album covers
+    var albumContainer = `<br/><img src="${album.images[0].url}"/><h3 class="bonus-name">${album.name}</h3>`;
+    var tracks = album.tracks.items;
+    tracks.forEach(function(track) {
+    
+    });
+  });
+  
   
 });
 
