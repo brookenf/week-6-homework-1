@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+    
+    
+    
   </head>
   <body>
     <header>
@@ -57,6 +60,10 @@
         <div id="bonus-container"></div>
       </section>
       
+      <section style="background-color: #4384fd;">
+        <canvas id="bar-chart" width="400px" height="400px"></canvas>
+      </section>
+      
     </main>
 
     <footer>
@@ -65,9 +72,11 @@
       </a>
       <a href="https://twitter.com/imariari"><p>Made by Arielle Vaniderstine</p></a>
     </footer>
-
+    
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="/client.js"></script>
+    <!-- import Chart.js library via CDN, per Chart.js documentation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js" defer></script>
 
   </body>
 </html>
