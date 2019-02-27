@@ -84,15 +84,12 @@
 
 
       // The audio features we want to show
-      var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"];
+      var keys = ["danceability", "energy", "acousticness", "liveness", "loudness"];
       var ctx = document.getElementById("bar-chart").getContext('2d');
       console.log("ctx " + ctx);
       
-      var graphData = []
+      var graphData = [];  
       
-      
-
-
       //getting the names mapped and the keys mapped
       songs.forEach((song) => {
         for(var i = 0; i < 1; i++) {
@@ -100,6 +97,7 @@
            if(song == "Whenever You Need Somebody"){
              keys.forEach((key) =>{
                html += `<p><span class="big-number">${data[0][key]}</span> ${key}</p>`;
+               graphData.push(data[0][key]);
              });
            }else{
              keys.forEach((key) =>{
@@ -116,7 +114,7 @@
               labels: keys,
               datasets: [{
                   label: '# of Votes',
-                  data: [grah,
+                  data: graphData,
                   backgroundColor: [
                       'rgba(255, 99, 132, 0.2)',
                       'rgba(54, 162, 235, 0.2)',
