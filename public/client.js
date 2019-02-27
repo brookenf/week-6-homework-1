@@ -1,3 +1,5 @@
+/* global Chart */
+
 // client-side js
 // run by the browser each time your view template is loaded
 
@@ -85,13 +87,36 @@
       var keys = ["danceability", "energy", "acousticness", "liveness", "tempo"];
       var ctx = document.getElementById("bar-chart").getContext('2d');
       console.log("ctx " + ctx);
-      var barChart = new Chart(ctx, {
+      
+      var graphData = []
+      
+      
+
+
+      //getting the names mapped and the keys mapped
+      songs.forEach((song) => {
+        for(var i = 0; i < 1; i++) {
+          html += `<h3>${song}</h3>`;
+           if(song == "Whenever You Need Somebody"){
+             keys.forEach((key) =>{
+               html += `<p><span class="big-number">${data[0][key]}</span> ${key}</p>`;
+             });
+           }else{
+             keys.forEach((key) =>{
+               html += `<p><span class="big-number">${data[1][key]}</span> ${key}</p>`;
+             });
+           }
+          audioContainer.innerHTML = html; 
+        } 
+      });
+      
+      var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+              labels: keys,
               datasets: [{
                   label: '# of Votes',
-                  data: [12, 19, 3, 5, 2, 3],
+                  data: [grah,
                   backgroundColor: [
                       'rgba(255, 99, 132, 0.2)',
                       'rgba(54, 162, 235, 0.2)',
@@ -120,26 +145,9 @@
                   }]
               }
           }
-      }); 
-      
-
-
-      //getting the names mapped and the keys mapped
-      songs.forEach((song) => {
-        for(var i = 0; i < 1; i++) {
-          html += `<h3>${song}</h3>`;
-           if(song == "Whenever You Need Somebody"){
-             keys.forEach((key) =>{
-               html += `<p><span class="big-number">${data[0][key]}</span> ${key}</p>`;
-             });
-           }else{
-             keys.forEach((key) =>{
-               html += `<p><span class="big-number">${data[1][key]}</span> ${key}</p>`;
-             });
-           }
-          audioContainer.innerHTML = html; 
-        } 
       });
+      
+      
     });
   });
 
